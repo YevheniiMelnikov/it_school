@@ -1,0 +1,54 @@
+option_1_1:
+  eng: "Java"
+  ru: "Java"
+  ua: "Java"
+
+option_1_2:
+  eng: "Python"
+  ru: "Python"
+  ua: "Python"
+
+option_1_3:
+  eng: "HTML"
+  ru: "HTML"
+  ua: "HTML"
+
+option_2_1:
+  eng: "XML"
+  ru: "XML"
+  ua: "XML"
+
+option_2_2:
+  eng: "SQL"
+  ru: "SQL"
+  ua: "SQL"
+
+option_2_3:
+  eng: "CSS"
+  ru: "CSS"
+  ua: "CSS"
+
+option_3_1:
+  eng: "Office package"
+  ru: "Офисный пакет"
+  ua: "Офісний пакет"
+
+option_3_2:
+  eng: "Version control system"
+  ru: "Система управления версиями"
+  ua: "Система керування версіями"
+
+option_3_3:
+  eng: "Web browser"
+  ru: "Веб-браузер"
+  ua: "Веб-браузер"
+
+share_contact:
+  eng: "Send my contact ☎️"
+  ru: "Поделиться своим контактом ☎️"
+  ua: "Поділітися своїм контактом ☎️"
+
+start:
+  eng: "Let's start! 🚀"
+  ru: "Стартуем! 🚀"
+  ua: "Стуртуємо! 🚀"
