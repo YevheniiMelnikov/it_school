@@ -1,12 +1,14 @@
 from typing import Type
 
+import yaml
 from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError, NoResultFound
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import FlushError
 
 from bot.logger import logger
-from bot.models import Base, User
+from bot.models import Base, Quiz, User, UserAnswer
+from settings import CONFIG_PATH
 
 
 class Storage:
@@ -75,6 +77,42 @@ class Storage:
         return bool(
             self.session.query(User.user_id).filter_by(user_id=user_id).scalar()
         )
+
+    def get_quiz_list(self) -> list[Quiz]:
+        with open(str(CONFIG_PATH / "quiz.yml"), "r", encoding="utf-8") as file:
+            data = yaml.safe_load(file)
+        return [Quiz.parse(item) for item in data]
+
+    def save_answer(
+        self, quiz_id: int, question_id: int, answer: str, user_id: int
+    ) -> None:
+        try:
+            user_answer = UserAnswer(
+                user_id=user_id,
+                quiz_id=quiz_id,
+                question_id=question_id,
+                answer=answer,
+            )
+            self.session.add(user_answer)
+            self.session.commit()
+        except (IntegrityError, FlushError):
+            self.session.rollback()
+        except Exception as e:
+            logger.exception(f"An error occurred: {e}")
+            self.session.rollback()
+
+    def get_selected_answers(
+        self, user_id: int, quiz_id: int
+    ) -> list[Type[UserAnswer]] | None:
+        try:
+            return (
+                self.session.query(UserAnswer)
+                .filter_by(user_id=user_id, quiz_id=quiz_id)
+                .all()
+            )
+        except NoResultFound:
+            logger.info(f"User with user_id={user_id} not found")
+            return None
 
     def close(self) -> None:
         self.session.close()

@@ -1,0 +1,38 @@
+- id: 1
+  name: "quiz_1"
+  questions:
+    - id: 1
+      message: messages.question_1
+      options:
+        - key: option_1_1
+          button: buttons.option_1_1
+        - key: option_1_2
+          button: buttons.option_1_2
+        - key: option_1_3
+          button: buttons.option_1_3
+      image: 1.jpg
+      answer: option_1_3
+
+    - id: 2
+      message: messages.question_2
+      options:
+        - key: option_2_1
+          button: buttons.option_2_1
+        - key: option_2_2
+          button: buttons.option_2_2
+        - key: option_2_3
+          button: buttons.option_2_3
+      image: 2.jpg
+      answer: option_2_2
+
+    - id: 3
+      message: messages.question_3
+      options:
+        - key: option_3_1
+          button: buttons.option_3_1
+        - key: option_3_2
+          button: buttons.option_3_2
+        - key: option_3_3
+          button: buttons.option_3_3
+      image: 3.jpg
+      answer: option_3_2
